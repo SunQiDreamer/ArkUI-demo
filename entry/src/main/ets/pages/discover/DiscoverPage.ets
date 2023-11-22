@@ -1,5 +1,5 @@
 @Component
-struct DiscoverPage {
+export struct DiscoverPage {
   build() {
     Text("discover")
   }

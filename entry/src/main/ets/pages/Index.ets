@@ -1,4 +1,7 @@
-import router from '@ohos.router'
+import { DiscoverPage } from './discover/DiscoverPage'
+import { HomePage } from './home/HomePage'
+import { ProfilePage } from './profile/ProfilePage'
+import { RecommendPage } from './recommand/RecommandPage'
 
 @Entry
 @Component
@@ -13,6 +16,8 @@ struct Index {
         .size({ width: 25, height: 25 })
       Text(title)
         .fontColor(this.currentIndex === targetIndex ? '#1698CE' : '#6B6B6B')
+        .fontSize(14)
+        .margin({ top: 5 })
     }
     .width('100%')
     .height(50)
@@ -26,23 +31,22 @@ struct Index {
   build() {
     Tabs({ barPosition: BarPosition.End, controller: this.tabsController }) {
       TabContent() {
-        // HomePage()
-        Text('首页的内容').fontSize(30)
+        HomePage()
       }
       .tabBar(this.TabBuilder('首页', 0, $r('app.media.mine_selected'), $r('app.media.mine_normal')))
 
       TabContent() {
-        Text('推荐的内容').fontSize(30)
+        RecommendPage()
       }
       .tabBar(this.TabBuilder('推荐', 1, $r('app.media.mine_selected'), $r('app.media.mine_normal')))
 
       TabContent() {
-        Text('发现的内容').fontSize(30)
+        DiscoverPage()
       }
       .tabBar(this.TabBuilder('发现', 2, $r('app.media.mine_selected'), $r('app.media.mine_normal')))
 
       TabContent() {
-        Text('我的内容').fontSize(30)
+        ProfilePage()
       }
       .tabBar(this.TabBuilder('我的', 3, $r('app.media.mine_selected'), $r('app.media.mine_normal')))
     }.scrollable(false)
